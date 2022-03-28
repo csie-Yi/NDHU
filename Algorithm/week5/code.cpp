@@ -43,7 +43,7 @@ pair<int, vector<int>> F(vector<int> A, int j)
     return make_pair(dp.size(), g);
 }
 
-vector<int> reF(vector<int> g, vector<int> A, int n)
+vector<int> reF_v1(vector<int> g, vector<int> A, int n)
 {
     int max = 0, idx = 0;
     vector<int> ans;
@@ -76,7 +76,7 @@ vector<int> reF(vector<int> g, vector<int> A, int n)
     }
     return ans;
 }
-vector<int> G(vector<int> dp, vector<int> A, int x, int len)
+vector<int> reF_v2(vector<int> dp, vector<int> A, int x, int len)
 {
     vector<int> ans;
     int l = 0;
@@ -104,8 +104,8 @@ int main()
     cout << "A[] : ";
     Print(A);
     pair<int, vector<int>> p = F(A, A.size());
-    vector<int> v1 = reF(p.second, A, A.size());
-    vector<int> v2 = G(p.second, A, A.size() - 3, p.first);
+    vector<int> v1 = reF_v1(p.second, A, A.size());
+    vector<int> v2 = reF_v2(p.second, A, A.size(), p.first);
     sort(begin(v1), end(v1));
     sort(begin(v2), end(v2));
     cout << "Reconstruct F(i)_v1 : ";
